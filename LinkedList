@@ -25,6 +25,64 @@ void beginsert()
      printf("Node inserted \n");
     }
 }
+void endinsert()
+{
+    struct node *ptr, *temp;
+    int item;
+    ptr=(struct node *)malloc(sizeof(struct node));
+    if(ptr==NULL)
+    printf("Overflow \n");
+    else
+    {
+     printf("Enter value \n");
+     scanf("%d",&item);
+     ptr->data=item;
+        if(head==NULL)
+        {
+            head=ptr;
+            ptr->next=NULL;
+        }
+        else
+        {
+            temp=head;
+            while(temp->next!=NULL)
+            temp=temp->next;
+            temp->next=ptr;
+            ptr->next=NULL;
+        }
+    }
+}
+
+
+void insertpos()
+{
+    int i,n,item;
+    struct node *ptr,*temp;
+    ptr=(struct node *)malloc(sizeof(struct node));
+    if(ptr==NULL)
+    printf("Overflow \n");
+    else
+    {
+        printf("Enter value \n");
+        scanf("%d",&item);
+        ptr->data=item;
+        printf("Enter location at which you want to enter ");
+        scanf("%d",&n);
+        temp=head;
+        for(i=1;i<n;i++)
+        {
+            temp=temp->next;
+            if(temp==NULL)
+            {
+                printf("\nCan't insert \n");
+                return;
+            }
+        }
+        ptr->next=temp->next;
+        temp->next=ptr;
+        printf("\nNode inserted \n");
+    }
+}
 
 void display()
 {
@@ -50,7 +108,7 @@ void main()
     int ch;
     while(ch !=9)
     {
-        printf("\n \n1.Insert\n2.Display \n9.Exit \n\n");
+        printf("\n \n1.Insert \n2.End insert \n3.Insert at position \n8.Display \n9.Exit \n\n");
         scanf("%d",&ch);
         switch(ch)
         {
@@ -60,6 +118,16 @@ void main()
                 break;
                 }
             case 2:
+                {
+                    endinsert();
+                        break;
+                }
+            case 3:
+                {
+                    insertpos();
+                    break;
+                }
+            case 8:
                 {
                     display();
                     break;
