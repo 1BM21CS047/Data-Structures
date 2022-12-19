@@ -174,7 +174,7 @@ int search()
     }
     else
     {
-        printf("Enter the data you want to search \n");
+        printf("Enter the data you want to delete \n");
         scanf("%d",&d);
         while(ptr!=NULL)
         {
@@ -195,7 +195,12 @@ void deleteele()
     int i,data;
     struct node *ptr,*temp;
     data=search();
-    ptr=head;
+    if(data==NULL)
+    {
+       printf("Element not found");
+        return;
+    }
+       ptr=head;
      for(i=1;i<data;i++)
     {
         temp=ptr;
