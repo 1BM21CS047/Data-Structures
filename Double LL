@@ -101,7 +101,7 @@ void insertl()
 {
     struct node *temp=head,*ptr;
     int e,da,f=0;
-    printf("Enter element \n\n");
+    printf("Enter node value to enter element to its left \n\n");
     scanf("%d",&e);
     while(temp!=NULL)
     {
@@ -118,6 +118,7 @@ void insertl()
         printf("Enter value to insert \n\n");
         scanf("%d",&da);
         ptr=(struct node *)malloc(sizeof(struct node));
+        ptr->data=da;
         temp->pre->next=ptr;
         ptr->pre=temp->pre;
         ptr->next=temp;
